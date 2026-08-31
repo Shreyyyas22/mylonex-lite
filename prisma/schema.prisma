@@ -1,0 +1,125 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  BUYER
+  SUPPLIER
+}
+
+enum ProductionStatus {
+  READY_STOCK
+  RUNNING_PRODUCTION
+  MADE_TO_ORDER
+}
+
+enum InquiryType {
+  SAMPLE_REQUEST
+  BULK_RFQ
+}
+
+enum InquiryStatus {
+  PENDING_QUOTE
+  QUOTED
+  ORDER_CONFIRMED
+  IN_PRODUCTION
+  DISPATCHED
+  QUOTE_REJECTED
+}
+
+enum OrderStatus {
+  ORDER_CONFIRMED
+  IN_PRODUCTION
+  DISPATCHED
+}
+
+model User {
+  id           String   @id @default(cuid())
+  name         String
+  email        String   @unique
+  passwordHash String
+  role         Role
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  inquiries    Inquiry[] @relation("BuyerInquiries")
+  quotes       Quote[]   @relation("SupplierQuotes")
+  buyerOrders  Order[]   @relation("BuyerOrders")
+  supplierOrders Order[] @relation("SupplierOrders")
+}
+
+model Fabric {
+  id               String           @id @default(cuid())
+  name             String
+  gsm              Int
+  weave            String
+  composition      String
+  width            String
+  productionStatus ProductionStatus
+  moq              Int
+  dispatchMinDays  Int
+  dispatchMaxDays  Int
+  certifications   String[]
+  description      String           @db.Text
+  imageUrl         String?
+  createdAt        DateTime         @default(now())
+  updatedAt        DateTime         @updatedAt
+
+  inquiries Inquiry[]
+}
+
+model Inquiry {
+  id                     String        @id @default(cuid())
+  buyerId                String
+  buyer                  User          @relation("BuyerInquiries", fields: [buyerId], references: [id], onDelete: Cascade)
+  fabricId               String
+  fabric                 Fabric        @relation(fields: [fabricId], references: [id], onDelete: Cascade)
+  type                   InquiryType
+  quantity               Int
+  requiredDispatchDate   DateTime?
+  deliveryLocation       String
+  targetPrice            Float?
+  remarks                String?       @db.Text
+  status                 InquiryStatus @default(PENDING_QUOTE)
+  createdAt              DateTime      @default(now())
+  updatedAt              DateTime      @updatedAt
+
+  quotes Quote[]
+  order  Order?
+}
+
+model Quote {
+  id                          String   @id @default(cuid())
+  inquiryId                   String
+  inquiry                     Inquiry  @relation(fields: [inquiryId], references: [id], onDelete: Cascade)
+  supplierId                  String
+  supplier                    User     @relation("SupplierQuotes", fields: [supplierId], references: [id], onDelete: Cascade)
+  pricePerMeter               Float
+  estimatedDispatchTimeline   String
+  paymentTerms                String
+  remarks                     String?  @db.Text
+  createdAt                   DateTime @default(now())
+  updatedAt                   DateTime @updatedAt
+
+  order Order?
+}
+
+model Order {
+  id         String      @id @default(cuid())
+  inquiryId  String      @unique
+  inquiry    Inquiry     @relation(fields: [inquiryId], references: [id], onDelete: Cascade)
+  quoteId    String      @unique
+  quote      Quote       @relation(fields: [quoteId], references: [id], onDelete: Cascade)
+  buyerId    String
+  buyer      User        @relation("BuyerOrders", fields: [buyerId], references: [id], onDelete: Cascade)
+  supplierId String
+  supplier   User        @relation("SupplierOrders", fields: [supplierId], references: [id], onDelete: Cascade)
+  status     OrderStatus @default(ORDER_CONFIRMED)
+  createdAt  DateTime    @default(now())
+  updatedAt  DateTime    @updatedAt
+}
