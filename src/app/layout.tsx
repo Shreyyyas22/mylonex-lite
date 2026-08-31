@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { Providers } from "@/components/layout/providers";
 import { Navbar } from "@/components/layout/navbar";
+import { ToastProvider } from "@/components/ui/toast";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -16,8 +17,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en">
       <body className={`${inter.className} bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-white min-h-screen`}>
         <Providers>
-          <Navbar />
-          <main className="max-w-6xl mx-auto px-4 py-6">{children}</main>
+          <ToastProvider>
+            <Navbar />
+            <main className="max-w-6xl mx-auto px-4 py-6">{children}</main>
+          </ToastProvider>
         </Providers>
       </body>
     </html>

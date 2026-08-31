@@ -3,11 +3,13 @@ import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input, Label, Textarea } from '@/components/ui/input';
 import { createInquiry } from '@/lib/actions';
+import { useToast } from '@/components/ui/toast';
 
 export default function InquiryForm({ fabric, isLoggedIn, role }: { fabric: any; isLoggedIn: boolean; role?: string }) {
   const [type, setType] = useState<'SAMPLE_REQUEST' | 'BULK_RFQ'>('BULK_RFQ');
   const [msg, setMsg] = useState('');
   const [error, setError] = useState('');
+  const { toast } = useToast();
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -15,9 +17,12 @@ export default function InquiryForm({ fabric, isLoggedIn, role }: { fabric: any;
     const fd = new FormData(e.currentTarget);
     fd.set('type', type);
     const res = await createInquiry(fd);
-    if ((res as any).error) setError((res as any).error);
-    else {
+    if ((res as any).error) {
+      setError((res as any).error);
+      toast((res as any).error, 'error');
+    } else {
       setMsg('Inquiry submitted — status PENDING_QUOTE');
+      toast('Inquiry created successfully');
       (e.target as HTMLFormElement).reset();
     }
   }
