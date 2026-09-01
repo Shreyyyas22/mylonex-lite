@@ -66,7 +66,7 @@ export default async function SupplierInquiryDetail({ params }: { params: { id: 
                 <Label>Remarks</Label>
                 <Textarea name="remarks" placeholder="Additional notes" />
               </div>
-              <Button type="submit" className="w-full">Submit Quote → QUOTED</Button>
+              <Button type="submit" className="w-full">Submit Quote</Button>
             </form>
           </CardContent>
         </Card>
@@ -94,17 +94,17 @@ export default async function SupplierInquiryDetail({ params }: { params: { id: 
                 <form action={updateOrderStatus as any}>
                   <input type="hidden" name="orderId" value={inquiry.order.id} />
                   <input type="hidden" name="status" value="IN_PRODUCTION" />
-                  <Button type="submit">Start Production → IN_PRODUCTION</Button>
+                  <Button type="submit">Start Production</Button>
                 </form>
               )}
               {inquiry.order.status === 'IN_PRODUCTION' && (
                 <form action={updateOrderStatus as any}>
                   <input type="hidden" name="orderId" value={inquiry.order.id} />
                   <input type="hidden" name="status" value="DISPATCHED" />
-                  <Button type="submit">Mark Dispatched → DISPATCHED</Button>
+                  <Button type="submit">Mark as Dispatched</Button>
                 </form>
               )}
-              {inquiry.order.status === 'DISPATCHED' && <p className="text-sm text-emerald-700">All 5 stages complete.</p>}
+              {inquiry.order.status === 'DISPATCHED' && <p className="text-sm text-emerald-700 dark:text-emerald-400">All 5 stages complete.</p>}
             </div>
           </CardContent>
         </Card>
