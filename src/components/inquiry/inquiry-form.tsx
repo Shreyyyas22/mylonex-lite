@@ -42,7 +42,7 @@ export default function InquiryForm({ fabric }: { fabric: any }) {
         </div>
         <p className="font-semibold mt-3 text-sm">Login to request a quote</p>
         <p className="text-sm text-slate-600 dark:text-slate-400 mt-1">Buyers can create Sample or Bulk RFQs with MOQ validation.</p>
-        <a href="/login" className="mt-4 inline-flex w-full justify-center bg-slate-900 dark:bg-white dark:text-slate-900 text-white rounded-xl py-2.5 text-sm font-semibold">Go to Login</a>
+        <a href="/login" className="mt-4 inline-flex w-full justify-center bg-slate-900 dark:bg-white dark:text-slate-900 text-white hover:bg-slate-800 dark:hover:bg-slate-100 active:bg-black dark:active:bg-slate-200 rounded-xl py-2.5 text-sm font-semibold transition-colors shadow-sm hover:shadow">Go to Login</a>
       </div>
     );
   }
@@ -70,7 +70,7 @@ export default function InquiryForm({ fabric }: { fabric: any }) {
             <button
               key={tab.id}
               onClick={() => setType(tab.id as any)}
-              className={`flex-1 h-8 rounded-lg text-sm font-medium transition-colors ${type === tab.id ? 'bg-white dark:bg-slate-700 shadow-sm border border-slate-200 dark:border-slate-600' : 'text-slate-600 dark:text-slate-400 hover:text-slate-900'}`}
+              className={`flex-1 h-8 rounded-lg text-sm font-medium transition-colors ${type === tab.id ? 'bg-white dark:bg-slate-700 shadow-sm border border-slate-200 dark:border-slate-600 text-slate-900 dark:text-white' : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 hover:bg-white/50 dark:hover:bg-slate-700/50'}`}
             >
               {tab.label}
             </button>

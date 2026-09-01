@@ -93,7 +93,7 @@ export default async function CatalogPage({ searchParams }: { searchParams: { se
 
                 <Link
                   href={`/catalog/${f.id}`}
-                  className="mt-4 inline-flex items-center justify-center gap-1.5 w-full bg-slate-900 hover:bg-black dark:bg-white dark:text-slate-900 dark:hover:bg-slate-100 text-white text-sm font-medium rounded-xl py-2.5 transition-colors"
+                  className="mt-4 inline-flex items-center justify-center gap-1.5 w-full bg-slate-900 hover:bg-slate-800 active:bg-black dark:bg-white dark:text-slate-900 dark:hover:bg-slate-100 dark:active:bg-slate-200 text-white text-sm font-medium rounded-xl py-2.5 transition-colors shadow-sm hover:shadow"
                 >
                   View detail
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="opacity-70"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>

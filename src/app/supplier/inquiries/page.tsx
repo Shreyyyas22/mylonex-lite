@@ -17,7 +17,7 @@ export default async function SupplierInquiriesPage() {
   });
 
   if (inquiries.length === 0) {
-    return <div className="text-center py-16 bg-white rounded-xl border"><p className="text-slate-500">No inquiries yet. Buyer inquiries will appear here.</p></div>;
+    return <div className="text-center py-16 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800"><p className="text-slate-500 dark:text-slate-400">No inquiries yet. Buyer inquiries will appear here.</p></div>;
   }
 
   return (
@@ -31,11 +31,11 @@ export default async function SupplierInquiriesPage() {
                 <CardTitle className="text-base">{inq.fabric.name} · {inq.type.replace('_', ' ')}</CardTitle>
                 <Badge variant={inq.status === 'PENDING_QUOTE' ? 'warning' : inq.status === 'QUOTED' ? 'secondary' : 'success'}>{inq.status}</Badge>
               </div>
-              <p className="text-xs text-slate-500">Buyer: {inq.buyer.name} · Qty {inq.quantity}m · Target ₹{inq.targetPrice ?? '-'} · Delivery {inq.deliveryLocation}</p>
+              <p className="text-xs text-slate-500 dark:text-slate-400">Buyer: {inq.buyer.name} · Qty {inq.quantity}m · Target ₹{inq.targetPrice ?? '-'} · Delivery {inq.deliveryLocation}</p>
             </CardHeader>
             <CardContent>
-              <p className="text-sm text-slate-600 line-clamp-1">{inq.remarks || 'No remarks'}</p>
-              <Link href={`/supplier/inquiries/${inq.id}`} className="mt-3 inline-block text-sm bg-slate-900 text-white px-3 py-1.5 rounded-md">Open Detail</Link>
+              <p className="text-sm text-slate-600 dark:text-slate-400 line-clamp-1">{inq.remarks || 'No remarks'}</p>
+              <Link href={`/supplier/inquiries/${inq.id}`} className="mt-3 inline-block text-sm bg-slate-900 dark:bg-white dark:text-slate-900 text-white hover:bg-slate-800 dark:hover:bg-slate-100 active:bg-black dark:active:bg-slate-200 px-3 py-1.5 rounded-lg font-medium transition-colors shadow-sm hover:shadow">Open Detail</Link>
             </CardContent>
           </Card>
         ))}

@@ -41,13 +41,13 @@ export default function LoginPage() {
             <div className="grid grid-cols-2 gap-2">
               <button
                 onClick={fillBuyer}
-                className={`h-10 rounded-xl border text-sm font-medium transition-colors ${isBuyer ? 'bg-slate-900 text-white dark:bg-white dark:text-slate-900 border-slate-900 dark:border-white shadow-sm' : 'bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800/80'}`}
+                className={`h-10 rounded-xl border text-sm font-medium transition-colors ${isBuyer ? 'bg-slate-900 text-white dark:bg-white dark:text-slate-900 border-slate-900 dark:border-white shadow-sm hover:bg-slate-800 dark:hover:bg-slate-100' : 'bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700 hover:border-slate-300 dark:hover:border-slate-600 hover:text-slate-900 dark:hover:text-white'}`}
               >
                 Continue as Buyer
               </button>
               <button
                 onClick={fillSupplier}
-                className={`h-10 rounded-xl border text-sm font-medium transition-colors ${isSupplier ? 'bg-slate-900 text-white dark:bg-white dark:text-slate-900 border-slate-900 dark:border-white shadow-sm' : 'bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800/80'}`}
+                className={`h-10 rounded-xl border text-sm font-medium transition-colors ${isSupplier ? 'bg-slate-900 text-white dark:bg-white dark:text-slate-900 border-slate-900 dark:border-white shadow-sm hover:bg-slate-800 dark:hover:bg-slate-100' : 'bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700 hover:border-slate-300 dark:hover:border-slate-600 hover:text-slate-900 dark:hover:text-white'}`}
               >
                 Continue as Supplier
               </button>
