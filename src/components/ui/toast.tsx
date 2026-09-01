@@ -22,7 +22,7 @@ export function ToastProvider({ children }: { children: React.ReactNode }) {
       {children}
       <div className="fixed bottom-4 right-4 z-50 space-y-2">
         {toasts.map((t) => (
-          <div key={t.id} className={`px-4 py-2 rounded shadow text-sm text-white ${t.type === 'error' ? 'bg-red-600' : 'bg-slate-900'}`}>
+          <div key={t.id} className={`px-4 py-2 rounded-xl shadow-lg text-sm border ${t.type === 'error' ? 'bg-red-600 dark:bg-red-500 text-white border-red-700 dark:border-red-400' : 'bg-slate-900 dark:bg-white text-white dark:text-slate-900 border-slate-800 dark:border-slate-200'}`}>
             {t.message}
           </div>
         ))}

@@ -16,12 +16,12 @@ export function LifecycleStepper({ inquiryStatus, orderStatus }: { inquiryStatus
         {stages.map((s, i) => (
           <div key={s.label} className="flex flex-1 items-center">
             <div className="flex flex-col items-center">
-              <div className={`h-8 w-8 rounded-full flex items-center justify-center text-xs font-bold border-2 ${s.done ? 'bg-emerald-500 border-emerald-500 text-white' : 'bg-white border-slate-300 text-slate-500'}`}>
+              <div className={`h-8 w-8 rounded-full flex items-center justify-center text-xs font-bold border-2 ${s.done ? 'bg-emerald-500 border-emerald-500 text-white' : 'bg-white dark:bg-slate-900 border-slate-300 dark:border-slate-600 text-slate-500 dark:text-slate-400'}`}>
                 {s.done ? '✓' : i + 1}
               </div>
-              <span className={`mt-2 text-xs font-medium text-center ${s.done ? 'text-emerald-700' : 'text-slate-500'}`}>{s.label}</span>
+              <span className={`mt-2 text-xs font-medium text-center ${s.done ? 'text-emerald-700 dark:text-emerald-400' : 'text-slate-500 dark:text-slate-400'}`}>{s.label}</span>
             </div>
-            {i < stages.length - 1 && <div className={`h-0.5 flex-1 mx-2 ${stages[i + 1].done ? 'bg-emerald-500' : 'bg-slate-200'}`} />}
+            {i < stages.length - 1 && <div className={`h-0.5 flex-1 mx-2 ${stages[i + 1].done ? 'bg-emerald-500' : 'bg-slate-200 dark:bg-slate-700'}`} />}
           </div>
         ))}
       </div>
