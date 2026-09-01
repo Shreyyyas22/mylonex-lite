@@ -7,6 +7,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { LifecycleStepper } from '@/components/order/lifecycle-stepper';
 import { acceptQuote, rejectQuote } from '@/lib/actions';
+import { QuotePDFButton } from '@/components/order/quote-pdf';
 
 export const dynamic = 'force-dynamic';
 
@@ -47,7 +48,12 @@ export default async function BuyerInquiryDetail({ params }: { params: { id: str
 
       {quote && (
         <Card>
-          <CardHeader><CardTitle className="text-base">Quote Comparison</CardTitle></CardHeader>
+          <CardHeader>
+            <div className="flex justify-between items-start gap-4">
+              <CardTitle className="text-base">Quote Comparison</CardTitle>
+              <QuotePDFButton inquiry={inquiry} fabric={inquiry.fabric} quote={quote} buyer={{ name: (inquiry as any).buyer?.name }} />
+            </div>
+          </CardHeader>
           <CardContent>
             <div className="grid grid-cols-2 gap-4 text-sm">
               <div className="bg-slate-50 dark:bg-slate-800 p-3 rounded-xl border border-slate-200 dark:border-slate-700">

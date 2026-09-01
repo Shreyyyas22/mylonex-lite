@@ -4,6 +4,7 @@ import "./globals.css";
 import { Providers } from "@/components/layout/providers";
 import { Navbar } from "@/components/layout/navbar";
 import { ToastProvider } from "@/components/ui/toast";
+import { QuoteNotifier } from "@/components/realtime/quote-notifier";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,6 +20,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Providers>
           <ToastProvider>
             <Navbar />
+            <QuoteNotifier />
             <main className="max-w-6xl mx-auto px-4 py-6">{children}</main>
           </ToastProvider>
         </Providers>
