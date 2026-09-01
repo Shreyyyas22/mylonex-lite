@@ -72,9 +72,9 @@ export default function CatalogFilters() {
             >
               <option value="">Any certification</option>
               <option value="GOTS">GOTS</option>
-              <option value="OEKO-TEX">OEKO-TEX</option>
+              <option value="OEKO-TEX 100">OEKO-TEX 100</option>
               <option value="BCI">BCI</option>
-              <option value="WRAP">WRAP</option>
+              <option value="GRS">GRS</option>
             </select>
           </div>
         </div>

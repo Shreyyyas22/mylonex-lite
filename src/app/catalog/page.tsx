@@ -5,9 +5,9 @@ import CatalogFilters from '@/components/fabric/catalog-filters';
 
 const fabricImages: Record<string, string> = {
   'Organic Cotton Poplin 40s': 'https://images.unsplash.com/photo-1523381210434-271e8be1f52b?w=600&h=400&fit=crop',
-  'Cotton Blend Twill 240 GSM': 'https://images.unsplash.com/photo-1507680434567-5739c80be1ac?w=600&h=400&fit=crop',
-  'Linen Herringbone 180 GSM': 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=600&h=400&fit=crop',
-  'Poly Viscose Suiting 280 GSM': 'https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=600&h=400&fit=crop',
+  'Indigo Yarn-Dyed Check Shirting': 'https://images.unsplash.com/photo-1507680434567-5739c80be1ac?w=600&h=400&fit=crop',
+  'Bamboo Lyocell Blend Satin': 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=600&h=400&fit=crop',
+  'Heavyweight Canvas Greige': 'https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=600&h=400&fit=crop',
 };
 
 const statusStyles: Record<string, string> = {
@@ -54,7 +54,7 @@ export default async function CatalogPage({ searchParams }: { searchParams: { se
             <div key={f.id} className="group rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 overflow-hidden flex flex-col hover:shadow-lg hover:-translate-y-0.5 transition-all">
               <div className="relative h-44 bg-slate-100 dark:bg-slate-800 overflow-hidden">
                 <img
-                  src={fabricImages[f.name] || 'https://images.unsplash.com/photo-1558175285-c57426f6eb84?w=600&h=400&fit=crop'}
+                  src={fabricImages[f.name] || f.imageUrl || 'https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=600&h=400&fit=crop'}
                   alt={f.name}
                   className="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-500"
                 />

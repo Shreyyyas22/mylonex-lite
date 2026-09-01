@@ -7,9 +7,9 @@ import Link from 'next/link';
 
 const fabricImages: Record<string, string> = {
   'Organic Cotton Poplin 40s': 'https://images.unsplash.com/photo-1523381210434-271e8be1f52b?w=800&h=600&fit=crop',
-  'Cotton Blend Twill 240 GSM': 'https://images.unsplash.com/photo-1507680434567-5739c80be1ac?w=800&h=600&fit=crop',
-  'Linen Herringbone 180 GSM': 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=800&h=600&fit=crop',
-  'Poly Viscose Suiting 280 GSM': 'https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=800&h=600&fit=crop',
+  'Indigo Yarn-Dyed Check Shirting': 'https://images.unsplash.com/photo-1507680434567-5739c80be1ac?w=800&h=600&fit=crop',
+  'Bamboo Lyocell Blend Satin': 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=800&h=600&fit=crop',
+  'Heavyweight Canvas Greige': 'https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=800&h=600&fit=crop',
 };
 
 const statusStyles: Record<string, string> = {
@@ -23,7 +23,7 @@ export default async function FabricDetail({ params }: { params: { id: string } 
   if (!fabric) return notFound();
   const session = await getServerSession(authOptions);
   const role = (session?.user as any)?.role;
-  const image = fabricImages[fabric.name] || 'https://images.unsplash.com/photo-1558175285-c57426f6eb84?w=800&h=600&fit=crop';
+  const image = fabricImages[fabric.name] || fabric.imageUrl || 'https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=800&h=600&fit=crop';
 
   return (
     <div className="max-w-5xl mx-auto space-y-6">
