@@ -13,14 +13,14 @@ export default function Home() {
         </div>
       </section>
       <div className="grid md:grid-cols-3 gap-6 mt-10">
-        <div className="bg-white p-6 rounded-xl border">
-          <h3 className="font-semibold">For Buyers</h3><p className="text-sm text-slate-600 mt-2">Search fabrics, submit RFQs with MOQ validation, compare quotes and track lifecycle.</p>
+        <div className="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm">
+          <h3 className="font-semibold">For Buyers</h3><p className="text-sm text-slate-600 dark:text-slate-400 mt-2">Search fabrics, submit RFQs with MOQ validation, compare quotes and track lifecycle.</p>
         </div>
-        <div className="bg-white p-6 rounded-xl border">
-          <h3 className="font-semibold">For Suppliers</h3><p className="text-sm text-slate-600 mt-2">Receive inquiries, build quotes, and manage order fulfillment with forward-only transitions.</p>
+        <div className="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm">
+          <h3 className="font-semibold">For Suppliers</h3><p className="text-sm text-slate-600 dark:text-slate-400 mt-2">Receive inquiries, build quotes, and manage order fulfillment with forward-only transitions.</p>
         </div>
-        <div className="bg-white p-6 rounded-xl border">
-          <h3 className="font-semibold">Trusted Workflow</h3><p className="text-sm text-slate-600 mt-2">Server-enforced RBAC and business rules ensure safety at every step.</p>
+        <div className="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm">
+          <h3 className="font-semibold">Trusted Workflow</h3><p className="text-sm text-slate-600 dark:text-slate-400 mt-2">Server-enforced RBAC and business rules ensure safety at every step.</p>
         </div>
       </div>
     </div>
