@@ -9,6 +9,8 @@ import { Input, Label, Textarea } from '@/components/ui/input';
 import { LifecycleStepper } from '@/components/order/lifecycle-stepper';
 import { createQuote, updateOrderStatus } from '@/lib/actions';
 
+export const dynamic = 'force-dynamic';
+
 export default async function SupplierInquiryDetail({ params }: { params: { id: string } }) {
   const session = await getServerSession(authOptions);
   if (!session) redirect('/login');

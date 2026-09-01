@@ -8,6 +8,8 @@ import { Button } from '@/components/ui/button';
 import { LifecycleStepper } from '@/components/order/lifecycle-stepper';
 import { acceptQuote, rejectQuote } from '@/lib/actions';
 
+export const dynamic = 'force-dynamic';
+
 export default async function BuyerInquiryDetail({ params }: { params: { id: string } }) {
   const session = await getServerSession(authOptions);
   if (!session) redirect('/login');

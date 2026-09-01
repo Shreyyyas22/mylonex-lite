@@ -104,7 +104,7 @@ export default function LoginPage() {
         </div>
 
         <p className="text-center text-xs text-slate-500 mt-4">
-          Role is enforced server-side — buyers can’t access <span className="font-mono">/supplier/*</span> and vice-versa.
+          Role is enforced server-side — buyers can&apos;t access <span className="font-mono">/supplier/*</span> and vice-versa.
         </p>
       </div>
     </div>
