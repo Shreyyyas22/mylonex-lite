@@ -28,7 +28,7 @@ Textile sourcing is fragmented — buyers struggle to discover fabrics by spec a
 | Auth | NextAuth.js 4 Credentials provider, bcryptjs, JWT |
 | Validation | Zod 3 (shared client/server) |
 | Testing | Vitest |
-| Deployment | Vercel |
+| Deployment | Render (Web Service + PostgreSQL) |
 
 ## Architecture
 
@@ -119,11 +119,22 @@ NEXTAUTH_URL=http://localhost:3000
 - `npm test` — vitest
 - `npm run lint` — eslint
 
-## Bonus Ideas
+## Deployment (Render)
 
-- PDF export of accepted quotation
-- Realtime toast “new quote received”
-- Dockerfile + docker-compose for one-command local setup
+Live: **https://mylonex-lite-gb9i.onrender.com**
+
+- **Web Service:** `mylonex-lite` (Node 20) — Build `npm install && npx prisma generate && npm run build`, Start `npm start`
+- **PostgreSQL:** `mylonex_db` (Oregon) — Internal `DATABASE_URL` for service, External `?sslmode=require` for local `prisma db push/seed`
+- **Env:** `DATABASE_URL`, `NEXTAUTH_URL=https://mylonex-lite-gb9i.onrender.com`, `NEXTAUTH_SECRET` (generated)
+- Seed: `DATABASE_URL=<External> npx prisma db push && npm run db:seed` → 4 spec fabrics (130/50, 155/1200, 180/6000, 340/100)
+
+## Bonus Features
+
+- ✅ **Visual Aesthetics** — Polished UI with dark mode, hover shadows, micro-interactions (`tailwind.config.ts:4`, `globals.css:5`, `button.tsx:14`)
+- ✅ **PDF Exporter** — Downloadable quotation/invoice via `jspdf` (`src/components/order/quote-pdf.tsx:1`) on Buyer Quote Comparison
+- ✅ **Realtime Updates** — Polling toast for quote arrivals (`src/app/api/quotes/route.ts:1` + `src/components/realtime/quote-notifier.tsx:1` mounted in `layout.tsx:18`)
+- ✅ **Automated Testing** — Vitest MOQ + Zod validation (`src/lib/validations.test.ts:4`, `npm test` 7/7)
+- ⏳ **Dockerization** — Dockerfile + docker-compose (not yet)
 
 ## License
 
