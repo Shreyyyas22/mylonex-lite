@@ -23,12 +23,12 @@ Textile sourcing is fragmented — buyers struggle to discover fabrics by spec a
 |---|---|
 | Frontend | Next.js 14 App Router, TypeScript, Tailwind CSS |
 | Backend | Server Actions + API Routes |
-| DB | PostgreSQL (Neon/Supabase hosted, Docker locally) |
+| DB | PostgreSQL |
 | ORM | Prisma 5.22 |
 | Auth | NextAuth.js 4 Credentials provider, bcryptjs, JWT |
 | Validation | Zod 3 (shared client/server) |
 | Testing | Vitest |
-| Deployment | Vercel + hosted Postgres |
+| Deployment | Vercel |
 
 ## Architecture
 
@@ -118,19 +118,6 @@ NEXTAUTH_URL=http://localhost:3000
 - `npm run db:push` / `db:seed` — prisma
 - `npm test` — vitest
 - `npm run lint` — eslint
-
-## Deployment
-
-- Provision hosted Postgres (Neon/Supabase), set `DATABASE_URL` in Vercel env, `NEXTAUTH_URL` to deployed URL, `NEXTAUTH_SECRET` to random secret
-- `npx prisma db push` + `npx prisma db seed` against hosted DB (or `prisma migrate deploy`)
-- Deploy to Vercel (`vercel --prod`), verify live demo scenario
-
-## Known Limitations & Next Steps
-
-- Single supplier flow (Inquiry supports multiple Quotes but UI shows one)
-- No file uploads, PDF export, or realtime notifications (listed as bonuses)
-- No pagination on catalog (4 seed fabrics)
-- Postgres locally via Docker 5433; production expects hosted Neon/Supabase
 
 ## Bonus Ideas
 
